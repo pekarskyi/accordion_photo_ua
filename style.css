@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Ruslan+Display:regular);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Condensed:regular);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    background: #232323;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accordion {
+    width: 100%;
+    max-width: 1100px;
+    height: 400px;
+    display: flex;
+    z-index: 2;
+    transition: 0.5s;
+}
+
+.tab {
+    position: relative;
+    width: 20%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.tab img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.tab div {
+    position: absolute;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    box-shadow:
+        0 -250px 150px -250px #000 inset,
+        0 -250px 150px -250px #000 inset;
+    transition: 0.5s;
+    transform: translateY(100%);
+}
+
+.tab div h1 {
+    font-family: 'Ruslan Display', cursive;
+    color: #FFF;
+    font-size: 34px;
+    text-transform: uppercase;
+    padding-bottom: 5pxc;
+}
+
+.tab div p {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: #FFF;
+    font-size: 20px;
+}
+
+.tlo {
+
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.tlo::before,
+.tlo::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 50vh;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.tlo::before {
+    background: #005bbb;
+    transform: translateY(-50vh);
+}
+
+.tlo::after {
+    background: #ffd500;
+    transform: translateY(50vh);
+}
+
+.tab:hover {
+    width: 80%;
+    cursor: pointer;
+}
+
+.tab:hover img {
+    filter: brightness(0.7)
+}
+
+.tab:hover div {
+    transform: translateY(0%);
+    transition-delay: 0.2s;
+}
+
+.accordion:hover~.tlo::before,
+.accordion:hover~.tlo::after {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.accordion:hover {
+    box-shadow: 0 0 10px #535353,
+        0 0 20px #535353,
+        0 0 30px #535353;
+}
